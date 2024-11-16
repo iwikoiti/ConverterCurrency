@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         costEditText = findViewById(R.id.costEditText)
         radioGroupCurrency = findViewById(R.id.radioGroupCurrency)
         var convertValue = 0f
+        var completeValue = 0f
 
         radioGroupCurrency.setOnCheckedChangeListener { _, checkedId ->
             val selectedRadioButton = findViewById<RadioButton>(checkedId)
@@ -47,16 +48,17 @@ class MainActivity : AppCompatActivity() {
                     convertValue = 100f
                 }
             }
-            Toast.makeText(this, "Выбрана валюта: $convertValue", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Выбрана валюта: $convertValue", Toast.LENGTH_SHORT).show()
 
         }
 
         okButton.setOnClickListener{
 
-
             var cost = costEditText.text.toString().toFloatOrNull() ?: 0f
 
+            completeValue = cost * convertValue
 
+            Toast.makeText(this, "Выбрана валюта: $completeValue", Toast.LENGTH_SHORT).show()
 
 
 
