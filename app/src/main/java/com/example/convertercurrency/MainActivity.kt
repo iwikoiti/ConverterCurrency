@@ -17,9 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var okButton: Button
     private lateinit var costEditText: EditText
     private lateinit var radioGroupCurrency: RadioGroup
-//    private lateinit var radioButtonEuro: RadioButton
-//    private lateinit var radioButtonDollar: RadioButton
-//    private lateinit var radioButtonPound: RadioButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,16 +50,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         okButton.setOnClickListener{
-
-            var cost = costEditText.text.toString().toFloatOrNull() ?: 0f
+            val cost = costEditText.text.toString().toFloatOrNull() ?: 0f
 
             completeValue = cost * convertValue
 
-            Toast.makeText(this, "Выбрана валюта: $completeValue", Toast.LENGTH_SHORT).show()
-
-
+            //Toast.makeText(this, "Выбрана валюта: $completeValue", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, resultCurrency::class.java)
+            intent.putExtra("your_cost", completeValue)
             startActivity(intent)
         }
     }
